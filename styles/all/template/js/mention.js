@@ -7,22 +7,24 @@ $(document).ready(function () {
         });
     }
 
-    tribute = new Tribute({
-        collection: [{
-            trigger: '@',
-            menuItemTemplate: function (item) {
-                return item.string;
-            },
+    ['@', '#'].forEach(trigger => {
+        tribute = new Tribute({
+            collection: [{
+                trigger: '@',
+                menuItemTemplate: function (item) {
+                    return item.string;
+                },
 
-            selectTemplate: function (item) {
-                return '[mention]' + item.original.value + '[/mention]';
-            },
+                selectTemplate: function (item) {
+                    return '[mention]' + item.original.value + '[/mention]';
+                },
 
-            values: function (text, cb) {
-                remoteSearch(text, cb);
-            },
-            spaceSelectsMatch: true,
-        }]
+                values: function (text, cb) {
+                    remoteSearch(text, cb);
+                },
+                spaceSelectsMatch: true,
+            }]
+        });
+        tribute.attach($('[name="message"]'));
     });
-    tribute.attach($('[name="message"]'));
 });
