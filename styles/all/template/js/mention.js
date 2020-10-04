@@ -10,7 +10,7 @@ $(document).ready(function () {
     ['@', '#'].forEach(trigger => {
         tribute = new Tribute({
             collection: [{
-                trigger: '@',
+                trigger: trigger,
                 menuItemTemplate: function (item) {
                     return item.string;
                 },
